@@ -1,0 +1,6 @@
+bundle exec rake
+cd test/dummy
+bundle exec rake test
+bundle exec rspec
+cd ../../lib/clapton/javascripts
+npm run test
