@@ -269,6 +269,7 @@ end
 
 ```ruby
 # spec/spec_helper.rb
+require "clapton/test_helper/rspec"
 
 RSpec.configure do |config|
   config.include Clapton::TestHelper::RSpec, type: :component
@@ -291,6 +292,8 @@ end
 
 ```ruby
 # test/test_helper.rb
+require "clapton/test_helper/minitest"
+
 class ActiveSupport::TestCase
   include Clapton::TestHelper::Minitest
 end
