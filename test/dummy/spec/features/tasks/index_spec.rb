@@ -1,6 +1,11 @@
 require "rails_helper"
 
 describe "Tasks", :js do
+  it "renders the home component" do
+    visit tasks_path
+    expect(page).to have_content("Hello, Clapton!")
+  end
+
   it "displays a task" do
     Task.create!(title: "Task 1", done: false, due: Time.current)
     visit tasks_path
