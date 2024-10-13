@@ -294,6 +294,16 @@ end
 
 After checking out the repo, run `bin/setup` to install dependencies. Then, run `bin/dev` to start the development server.
 
+### Testing
+
+Run `bundle exec rake test` to run the test suite.
+
+Run `cd test/dummy && bundle exec rake test` to run the test suite for the dummy app.
+
+Run `cd test/dummy && bundle exec rspec` to run the test suite for the dummy app with RSpec.
+
+Run `cd lib/clapton/javascripts && npm run test` to run the test suite for the JavaScript part.
+
 ## Contributing
 
 Bug reports and pull requests are welcome on GitHub at https://github.com/kawakamimoeki/clapton. This project is intended to be a safe, welcoming space for collaboration, and contributors are expected to adhere to the [code of conduct](https://github.com/kawakamimoeki/clapton/blob/main/CODE_OF_CONDUCT.md).
