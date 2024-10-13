@@ -1,7 +1,13 @@
 # Clapton
 Clapton is a Ruby on Rails gem for building web apps with pure Ruby only (no JavaScript and no HTML templates).
 
-# Installation
+## Stack
+
+- Ruby on Rails
+- Action Cable (WebSocket)
+- [Ruby2JS](https://www.ruby2js.com/) (for compiling Ruby to JavaScript)
+
+## Installation
 
 Add this line to your application's Gemfile:
 
