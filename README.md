@@ -310,6 +310,10 @@ class TaskListComponentTest < ActiveSupport::TestCase
 end
 ```
 
+### Deployment
+
+Run `bundle exec rake clapton:compile` to compile the components.
+
 ## Development
 
 After checking out the repo, run `bin/setup` to install dependencies. Then, run `bin/dev` to start the development server.
