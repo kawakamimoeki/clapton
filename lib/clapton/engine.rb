@@ -22,11 +22,13 @@ module Clapton
 
       compile_components
 
-      listener = Listen.to(Rails.root.join("app", "components")) do |modified, added, removed|
-        compile_components
-      end
+      Rails.env.development? do
+        listener = Listen.to(Rails.root.join("app", "components")) do |modified, added, removed|
+          compile_components
+        end
 
-      listener.start
+        listener.start
+      end
     end
 
     def compile_components
