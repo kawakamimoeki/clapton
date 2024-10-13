@@ -25,10 +25,41 @@ jobs:
       with:
         node-version: 18
 
-    - name: Install dependencies
+    - name: Install gems
       run: |
-        bin/setup
+        bundle install --path vendor/bundle
+    
+    - name: Install JavaScript dependencies
+      run: |
+        cd lib/clapton/javascripts
+        npm install
+    
+    - name: Build JavaScript
+      run: |
+        cd lib/clapton/javascripts
+        npm run build
 
-    - name: Run tests
+    - name: Run library tests
       run: |
-        bin/test
+        bundle exec rake test
+    
+    - name: Run dummy app tests (minitest)
+      run: |
+        cd test/dummy
+        bundle exec rake test
+
+    - name: Setup Firefox
+      uses: browser-actions/setup-firefox@latest
+
+    - name: Setup GeckoDriver
+      uses: browser-actions/setup-geckodriver@latest
+
+    - name: Run dummy app tests (rspec)
+      run: |
+        cd test/dummy
+        bundle exec rspec
+    
+    - name: Run JavaScript tests
+      run: |
+        cd lib/clapton/javascripts
+        npm run test
