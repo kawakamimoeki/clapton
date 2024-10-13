@@ -47,7 +47,13 @@ jobs:
       run: |
         cd test/dummy
         bundle exec rake test
-      
+
+    - name: Setup Firefox
+      uses: browser-actions/setup-firefox@latest
+
+    - name: Setup GeckoDriver
+      uses: browser-actions/setup-geckodriver@latest
+
     - name: Run dummy app tests (rspec)
       run: |
         cd test/dummy
