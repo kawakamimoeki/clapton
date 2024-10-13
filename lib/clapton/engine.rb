@@ -17,12 +17,13 @@ module Clapton
       end
 
       components_path = Rails.root.join("app", "components")
-      FileUtils.mkdir_p(components_path) unless components_path.exist?
-      FileUtils.touch(components_path.join(".keep"))
 
-      compile_components
+      compile_components if components_path.exist?
 
-      Rails.env.development? do
+      if Rails.env.development?
+        FileUtils.mkdir_p(components_path) unless components_path.exist?
+        FileUtils.touch(components_path.join(".keep"))
+
         listener = Listen.to(Rails.root.join("app", "components")) do |modified, added, removed|
           compile_components
         end
