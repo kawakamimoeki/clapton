@@ -17,5 +17,15 @@ module Clapton
       end
       tag.div(id: "clapton", data: { clapton: datas })
     end
+
+    def clapton_component_tag(component)
+      state_class = component[0].to_s.gsub("Component", "State")
+      if Object.const_defined?(state_class)
+        data = { component: component[0].to_s, state: Object.const_get(state_class).new(component[1]).to_h }
+      else
+        data = { component: component[0].to_s, state: {} }
+      end
+      tag.div(class: "clapton-component", data: { clapton: data })
+    end
   end
 end
