@@ -131,6 +131,17 @@ mount Clapton::Engine => "/clapton"
 
 ![TODO APP DEMO](./docs/todo-app-demo.gif)
 
+### Generate Component and State
+
+```bash
+rails generate clapton TaskList
+```
+
+After running the generator, you will see the following files:
+
+- `app/components/task_list_component.rb`
+- `app/states/task_list_state.rb`
+
 ### Preset Components
 
 ```ruby
