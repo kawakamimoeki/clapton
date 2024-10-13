@@ -29,6 +29,21 @@ jobs:
       run: |
         bin/setup
 
-    - name: Run tests
+    - name: Run library tests
       run: |
-        bin/test
+        bundle exec rake test
+    
+    - name: Run dummy app tests (minitest)
+      run: |
+        cd test/dummy
+        bundle exec rake test
+      
+    - name: Run dummy app tests (rspec)
+      run: |
+        cd test/dummy
+        bundle exec rspec
+    
+    - name: Run JavaScript tests
+      run: |
+        cd lib/clapton/javascripts
+        npm run test
