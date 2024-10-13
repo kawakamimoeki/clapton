@@ -27,19 +27,22 @@ describe "Tasks", :js do
     Task.create!(title: "Task 1", done: false, due: Time.current)
     visit tasks_path
     field = find("input[type='text'][value='Task 1']")
-    8.times { field.send_keys(:backspace) }
+    8.times {
+      field.send_keys(:backspace)
+      sleep 0.2
+    }
     field.send_keys("T")
-    sleep 0.1
+    sleep 0.2
     field.send_keys("a")
-    sleep 0.1
+    sleep 0.2
     field.send_keys("s")
-    sleep 0.1
+    sleep 0.2
     field.send_keys("k")
-    sleep 0.1
+    sleep 0.2
     field.send_keys(:space)
-    sleep 0.1
+    sleep 0.2
     field.send_keys("2")
-    sleep 1
+    sleep 0.2
     expect(page).to have_selector("input[type='text'][value='Task 2']")
   end
 
