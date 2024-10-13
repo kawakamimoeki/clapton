@@ -16,11 +16,8 @@ module Clapton
         ActionCable.server.config.logger = Rails.logger
       end
 
-      components_path = Rails.root.join("app", "components")
-
-      compile_components if components_path.exist?
-
-      if Rails.env.development?
+      if Rails.env.development? || Rails.env.test?
+        components_path = Rails.root.join("app", "components")
         FileUtils.mkdir_p(components_path) unless components_path.exist?
         FileUtils.touch(components_path.join(".keep"))
 
