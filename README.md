@@ -140,7 +140,12 @@ mount Clapton::Engine => "/clapton"
 ### Component rendering
 
 ```html
-<%= clapton_component_tag([:TaskListComponent, { tasks: @tasks.map { |task| { id: task.id, title: task.title, due: task.due, done: task.done } }]) %>
+<%= clapton_component_tag(
+  :TaskListComponent,
+  {
+    tasks: @tasks.map { |task| { id: task.id, title: task.title, due: task.due, done: task.done } }
+  }
+) %>
 ```
 
 ### Generate Component and State
