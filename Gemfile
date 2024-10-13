@@ -4,7 +4,7 @@ git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 # Specify your gem's dependencies in clapton.gemspec.
 gemspec
 
-group :development do
+group :development, :test do
   gem 'sqlite3', '~> 1.4'
   gem 'puma'
   gem 'ruby-openai'
