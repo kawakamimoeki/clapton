@@ -67,7 +67,7 @@ end
 
 Capybara.register_driver :firefox do |app|
   options = Selenium::WebDriver::Firefox::Options.new
-  options.add_argument('-headless') # ヘッドレスモードを使用する場合
+  options.add_argument('-headless')
   Capybara::Selenium::Driver.new(app, browser: :firefox, options: options)
 end
 
