@@ -25,9 +25,14 @@ jobs:
       with:
         node-version: 18
 
-    - name: Install dependencies
+    - name: Install gems
       run: |
-        bin/setup
+        bundle install
+    
+    - name: Install JavaScript dependencies
+      run: |
+        cd lib/clapton/javascripts
+        npm install
 
     - name: Run library tests
       run: |
