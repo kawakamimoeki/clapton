@@ -33,6 +33,11 @@ jobs:
       run: |
         cd lib/clapton/javascripts
         npm install
+    
+    - name: Build JavaScript
+      run: |
+        cd lib/clapton/javascripts
+        npm run build
 
     - name: Run library tests
       run: |
