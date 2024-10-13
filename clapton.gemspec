@@ -25,4 +25,6 @@ Gem::Specification.new do |spec|
   spec.add_dependency "listen", "~> 3"
   spec.add_dependency "capybara", "~> 3"
   spec.add_dependency "execjs", "~>2"
+  spec.add_dependency "minitest", "~>5"
+  spec.add_dependency "rspec", "~>3"
 end
