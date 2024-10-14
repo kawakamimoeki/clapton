@@ -1,7 +1,12 @@
 import { claptonChannel } from "../channel/clapton-channel";
 
 export const handleAction = async (target: HTMLElement, stateName: string, fn: string) => {
-  const targetComponent = target.closest(`[data-component="${stateName.replace("State", "Component")}"]`) as HTMLElement;
+  let targetComponent = target;
+  if (target.dataset.component === stateName.replace("State", "Component")) {
+    targetComponent = target
+  } else {
+    targetComponent = target.closest(`[data-component="${stateName.replace("State", "Component")}"]`) as HTMLElement;
+  }
   if (!targetComponent) return;
   const component = target.closest(`[data-component]`) as HTMLElement;
   const attribute = target.getAttribute("data-attribute");

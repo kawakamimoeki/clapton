@@ -23,5 +23,9 @@ class TaskListState < Clapton::State
     task.update(due: params[:due])
     self.tasks.find { |t| t[:id] == params[:id] }[:due] = task.due
   end
+
+  def add_empty_task(params)
+    self.tasks << { id: nil, title: "", due: "", done: false }
+  end
 end
 

@@ -21,6 +21,8 @@ module Clapton
         FileUtils.mkdir_p(components_path) unless components_path.exist?
         FileUtils.touch(components_path.join(".keep"))
 
+        compile_components
+
         listener = Listen.to(Rails.root.join("app", "components")) do |modified, added, removed|
           compile_components
         end

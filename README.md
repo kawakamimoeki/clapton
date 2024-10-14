@@ -159,6 +159,23 @@ After running the generator, you will see the following files:
 - `app/components/task_list_component.rb`
 - `app/states/task_list_state.rb`
 
+### Special Event
+
+#### render
+
+The `render` event is a special event that is triggered when the component is rendered.
+
+```ruby
+# app/components/task_list_component.rb
+class TaskListComponent < Clapton::Component
+  def render
+    # ...
+    @root.add_action(:render, :TaskListState, :add_empty_task, debounce: 500)
+    @root.render
+  end
+end
+```
+
 ### Preset Components
 
 ```ruby

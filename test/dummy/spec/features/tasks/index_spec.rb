@@ -6,6 +6,12 @@ describe "Tasks", :js do
     expect(page).to have_content("Hello, Clapton!")
   end
 
+  it "renders new task form" do
+    visit tasks_path
+    sleep 1
+    expect(page).to have_selector("input[type='text'][value='']")
+  end
+
   it "displays a task" do
     Task.create!(title: "Task 1", done: false, due: Time.current)
     visit tasks_path

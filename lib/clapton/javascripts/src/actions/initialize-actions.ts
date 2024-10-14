@@ -14,6 +14,14 @@ const initializeActionsForElement = (element: HTMLElement) => {
     const { eventType, componentName, stateName, fnName, bounceTime } = splitActionAttribute(action);
     if (!eventType || !componentName || !fnName) return;
 
+    if (eventType === "render") {
+      setTimeout(() => {
+        handleAction(element, stateName, fnName)
+      }, 100);
+      element.setAttribute("data-render-event-handler", "true");
+      return;
+    }
+
     if (bounceTime > 0) {
       element.addEventListener(eventType, debounce((event) => 
         handleAction(event.target as HTMLElement, stateName, fnName), bounceTime)
