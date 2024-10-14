@@ -183,6 +183,8 @@ datetime_field = Clapton::DateTimeField.new(:ExampleState, :example_attribute, {
 element = Clapton::Element.new("div", { id: "example-element" })
 element.add(Clapton::Text.new("Hello"))
 
+embed = Clapton::Embed.new("<blockquote>This is a test</blockquote>")
+
 emphasis = Clapton::Emphasis.new
 emphasis.add(Clapton::Text.new("Hello"))
 
