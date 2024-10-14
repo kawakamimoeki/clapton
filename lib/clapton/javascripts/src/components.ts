@@ -5,6 +5,7 @@ import { Checkbox } from "./components/checkbox"
 import { Code } from "./components/code"
 import { DateTimeField } from "./components/datetime-field"
 import { Element } from "./components/element"
+import { Embed } from "./components/embed"
 import { Emphasis } from "./components/emphasis"
 import { Form } from "./components/form"
 import { Heading } from "./components/heading"
@@ -22,4 +23,4 @@ import { Component } from "./components/component"
 import { TextField } from "./components/text-field"
 import { Text } from "./components/text"
 
-export { Box, Component, Text, TextField, Button, DateTimeField, BlockQuote, Checkbox, Code, Element, Emphasis, Form, Heading, Image, Link, List, ListItem, OrderedList, Paragraph, Quote, RadioButton, Select, Span };
+export { Box, Component, Text, TextField, Button, DateTimeField, BlockQuote, Checkbox, Code, Element, Emphasis, Form, Heading, Image, Link, List, ListItem, OrderedList, Paragraph, Quote, RadioButton, Select, Span, Embed };
