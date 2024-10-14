@@ -1,4 +1,4 @@
-import { updateComponent } from "dom/update-component";
+import { updateComponent } from "../dom/update-component";
 
 export const initializeInputs = () => {
   const inputElements = document.querySelectorAll("[data-attribute]");

@@ -7,6 +7,7 @@ class TaskListComponent < Clapton::Component
     add_button.add(Clapton::Text.new("Add Task"))
     add_button.add_action(:click, :TaskListState, :add_task)
     @root.add(add_button)
+    @root.add_action(:render, :TaskListState, :add_empty_task, debounce: 600)
     @root.render
   end
 end

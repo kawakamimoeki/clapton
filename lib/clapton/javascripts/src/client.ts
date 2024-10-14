@@ -1,6 +1,3 @@
-import { splitActionAttribute } from "./html/split-action-attribute"
-import { updateComponent } from "./dom/update-component"
-import { handleAction } from "./actions/handle-action"
 import { initializeActions } from "actions/initialize-actions";
 import { initializeInputs } from "inputs/initialize-inputs";
 
