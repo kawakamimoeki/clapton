@@ -13,9 +13,12 @@ class TaskListState < Clapton::State
   end
 
   def update_title(params)
-    task = Task.find(params[:id])
+    task = Task.find_or_create_by(id: params[:id])
+    if params[:id].nil?
+      self.tasks.find { |t| !t[:id] }[:id] = task.id
+    end
     task.update(title: params[:title])
-    self.tasks.find { |t| t[:id] == params[:id] }[:title] = task.title
+    self.tasks.find { |t| t[:id] == task.id }[:title] = task.title
   end
 
   def update_due(params)
