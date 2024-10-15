@@ -8,8 +8,8 @@ export const initializeInputs = () => {
     const state = JSON.parse(component.getAttribute("data-state") || "{}");
     if (!attribute || !component) return;
     if (element.tagName === "INPUT") {
-      element.addEventListener("input", (event: Event) => {
-        updateComponent(component, state, attribute, event.target as HTMLInputElement);
+      element.addEventListener("input", async (event: Event) => {
+        await updateComponent(component, state, attribute, event.target as HTMLInputElement);
       });
     }
   });

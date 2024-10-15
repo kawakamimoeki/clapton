@@ -24,6 +24,6 @@ import { TextField } from "./components/text-field"
 import { Text } from "./components/text"
 
 
-export const Clapton = {
+export {
   Box, Component, Text, TextField, Button, DateTimeField, BlockQuote, Checkbox, Code, Element, Emphasis, Form, Heading, Image, Link, List, ListItem, OrderedList, Paragraph, Quote, RadioButton, Select, Span, Embed
 };
