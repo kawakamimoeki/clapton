@@ -12,6 +12,7 @@ Clapton is a Ruby on Rails gem for building web apps with pure Ruby only (no Jav
 - Action Cable (WebSocket)
 - [Ruby2JS](https://www.ruby2js.com/) (for compiling Ruby to JavaScript)
 - [Morphdom](https://github.com/patrick-steele-idem/morphdom)
+- importmap
 
 ## Installation
 
