@@ -4,7 +4,7 @@ module Clapton
       require "execjs"
 
       def render_component(component, **kwargs)
-        js = File.read(File.join(__dir__, "..", "javascripts", "dist", "components.js"))
+        js = File.read(File.join(__dir__, "..", "javascripts", "dist", "components-for-test.js"))
         Dir.glob(Rails.root.join("app", "components", "**", "*.rb")).each do |file|
           js += Ruby2JS.convert(File.read(file), preset: true)
           js += "\n"

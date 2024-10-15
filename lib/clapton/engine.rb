@@ -32,20 +32,24 @@ module Clapton
     end
 
     def compile_components
-      js = File.read(File.join(__dir__, "javascripts", "dist", "components.js"))
-      js += "\n"
-      js += File.read(File.join(__dir__, "javascripts", "dist", "client.js"))
-      js += "\n"
-      js += "window.components = [];"
-      js += "\n"
-      Dir.glob(Rails.root.join("app", "components", "**", "*.rb")).each do |file|
-        js += Ruby2JS.convert(File.read(file), preset: true)
-        js += "\n"
-        js += "window.#{File.basename(file, ".rb").camelize} = #{File.basename(file, ".rb").camelize};"
-        js += "\n"
-      end
       FileUtils.mkdir_p(Rails.root.join("public", "clapton")) unless Rails.root.join("public", "clapton").exist?
-      File.write(Rails.root.join("public", "clapton", "index.js"), js)
+      File.write(Rails.root.join("public", "clapton", "components.js"), File.read(File.join(__dir__, "javascripts", "dist", "components.js")))
+      File.write(Rails.root.join("public", "clapton", "client.js"), File.read(File.join(__dir__, "javascripts", "dist", "client.js")))
+      Dir.glob(Rails.root.join("app", "components", "**", "*.rb")).each do |file|
+        code = File.read(file)
+        js = ""
+        js += "import { Clapton } from 'components';"
+        js += "\n"
+        code.scan(/(\w+)Component\.new/).each do |match|
+          js += "import { #{match[0]}Component } from '#{match[0]}Component';"
+          js += "\n"
+        end
+        js += Ruby2JS.convert(code, preset: true)
+        js += "\n"
+        js += "export { #{File.basename(file, ".rb").camelize} };"
+        js += "\n"
+        File.write(Rails.root.join("public", "clapton", "#{File.basename(file, ".rb").camelize}.js"), js)
+      end
     end
   end
 end

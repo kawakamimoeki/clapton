@@ -15,9 +15,12 @@ const initializeActionsForElement = (element: HTMLElement) => {
     if (!eventType || !componentName || !fnName) return;
 
     if (eventType === "render") {
-      setTimeout(() => {
-        handleAction(element, stateName, fnName)
-      }, 100);
+      const interval = setInterval(() => {
+        if ((window as any).actionCableConnected === true) {
+          handleAction(element, stateName, fnName);
+          clearInterval(interval);
+        }
+      }, 10);
       element.setAttribute("data-render-event-handler", "true");
       return;
     }

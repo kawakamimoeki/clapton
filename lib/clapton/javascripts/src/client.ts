@@ -2,28 +2,28 @@ import { initializeActions } from "actions/initialize-actions";
 import { initializeInputs } from "inputs/initialize-inputs";
 
 interface ComponentDefinition {
-  component: new (state: any) => ComponentInstance;
+  component: string;
   state: any;
   id: string;
 }
 
-interface ComponentInstance {
-  render: string;
-  [key: string]: any;
-}
-
-const initializeComponents = () => {
+const initializeComponents = async () => {
   const components = document.querySelector("#clapton")?.getAttribute("data-clapton") || "[]";
-  JSON.parse(components).forEach((component: ComponentDefinition) => createAndAppendComponent(component, document.querySelector("#clapton")!));
-  document.querySelectorAll(".clapton-component").forEach((element) => {
+  const componentArray = JSON.parse(components);
+  for (const component of componentArray) {
+    await createAndAppendComponent(component, document.querySelector("#clapton")!);
+  }
+  const elements = document.querySelectorAll(".clapton-component");
+  for (const element of elements) {
     const component = JSON.parse(element.getAttribute("data-clapton") || "{}");
-    createAndAppendComponent(component, element as HTMLElement);
-  });
+    await createAndAppendComponent(component, element as HTMLElement);
+  }
 };
 
-const createAndAppendComponent = (component: ComponentDefinition, element: HTMLElement) => {
+const createAndAppendComponent = async (component: ComponentDefinition, element: HTMLElement) => {
   const componentDom = document.createElement('div');
-  const instance = new (window[component.component as any] as any)(component.state);
+  const module = await import(`${component.component}`);
+  const instance = new (module[component.component] as any)(component.state);
   componentDom.innerHTML = instance.render;
   const firstChild = componentDom.firstChild as HTMLElement;
   if (firstChild) {
@@ -31,8 +31,8 @@ const createAndAppendComponent = (component: ComponentDefinition, element: HTMLE
   }
 };
 
-document.addEventListener("DOMContentLoaded", () => {
-  initializeComponents();
+document.addEventListener("DOMContentLoaded", async () => {
+  await initializeComponents();
   initializeActions();
   initializeInputs();
 });

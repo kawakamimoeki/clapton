@@ -2,7 +2,22 @@ module Clapton
   module ClaptonHelper
 
     def clapton_javascript_tag
-      tag.script(src: "/clapton/index.js", type: "text/javascript")
+      all_components = Dir.glob(Rails.root.join("app", "components", "**", "*.rb"))
+      tags = <<~HTML
+        <script type="importmap">
+          {
+            "imports": {
+              "client": "/clapton/client.js",
+              "components": "/clapton/components.js",
+              #{ all_components.map do
+               |component| "\"#{File.basename(component, ".rb").camelize}\": \"/clapton/#{File.basename(component, ".rb").camelize}.js\""
+              end.join(",\n") }
+            }
+          }
+        </script>
+        <script type="module" src="/clapton/client.js"></script>
+      HTML
+      tags.html_safe
     end
 
     def clapton_tag
