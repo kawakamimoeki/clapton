@@ -9,12 +9,12 @@ export const handleAction = async (target: HTMLElement, stateName: string, fn: s
   }
   if (!targetComponent) return;
   const component = target.closest(`[data-component]`) as HTMLElement;
-  const attribute = target.getAttribute("data-attribute");
+  const attribute = target.dataset.attribute;
   if (attribute) {  
-    const state = JSON.parse(component.getAttribute("data-state") || "{}");
+    const state = JSON.parse(component.dataset.state || "{}");
     if (target.tagName === "INPUT") {
       state[attribute] = (target as HTMLInputElement).value;
-      component.setAttribute("data-state", JSON.stringify(state));
+      component.dataset.state = JSON.stringify(state);
     }
   };
   claptonChannel.perform(
@@ -23,14 +23,14 @@ export const handleAction = async (target: HTMLElement, stateName: string, fn: s
       data: {
         component: {
           name: stateName.replace("State", "Component"),
-          id: targetComponent.getAttribute("data-id"),
+          id: targetComponent.dataset.id,
         },
         state: {
           name: stateName,
           action: fn,
-          attributes: JSON.parse(targetComponent.getAttribute("data-state") || "{}"),
+          attributes: JSON.parse(targetComponent.dataset.state || "{}"),
         },
-        params: JSON.parse(component.getAttribute("data-state") || "{}")
+        params: JSON.parse(component.dataset.state || "{}")
       }
     }
   );
