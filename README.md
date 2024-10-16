@@ -183,7 +183,7 @@ end
 block_quote = Clapton::BlockQuote.new
 block_quote.add(Clapton::Text.new("Hello"))
 
-box = **Clapton**::Box.new
+box = Clapton::Box.new
 box.add(Clapton::Text.new("Hello"))
 
 button = Clapton::Button.new
