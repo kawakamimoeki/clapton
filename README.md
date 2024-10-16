@@ -37,10 +37,10 @@ class TaskListComponent < Clapton::Component
     @state.tasks.each do |task|
       @root.add(TaskItemComponent.new(id: task[:id], title: task[:title], due: task[:due], done: task[:done]))
     end
-    add_button = Clapton::Button.new
-    add_button.add(Clapton::Text.new("Add Task"))
-    add_button.add_action(:click, :TaskListState, :add_task)
-    @root.add(add_button)
+    btn = c.button
+    btn.add(c.text("Add Task"))
+    btn.add_action(:click, :TaskListState, :add_task)
+    @root.add(btn)
     @root.render
   end
 end
@@ -51,17 +51,17 @@ end
 # app/components/task_item_component.rb
 class TaskItemComponent < Clapton::Component
   def render
-    button = Clapton::Button.new
-    button.add(Clapton::Text.new(@state.done ? "✅" : "🟩"))
-    button.add_action(:click, :TaskListState, :toggle_done)
+    btn = c.button
+    btn.add(c.text(@state.done ? "✅" : "🟩"))
+    btn.add_action(:click, :TaskListState, :toggle_done)
 
-    text_field = Clapton::TextField.new(@state, :title)
-    text_field.add_action(:input, :TaskListState, :update_title)
+    tf = c.input(@state, :title)
+    tf.add_action(:input, :TaskListState, :update_title)
 
-    datetime_field = Clapton::DateTimeField.new(@state, :due)
-    datetime_field.add_action(:input, :TaskListState, :update_due)
+    dt = c.datetime(@state, :due)
+    dt.add_action(:input, :TaskListState, :update_due)
 
-    @root.add(button).add(text_field).add(datetime_field)
+    @root.add(btn).add(tf).add(dt)
     @root.render
   end
 end
@@ -177,7 +177,7 @@ class TaskListComponent < Clapton::Component
 end
 ```
 
-### Preset Components
+### Preset Components Classes
 
 ```ruby
 block_quote = Clapton::BlockQuote.new
@@ -251,6 +251,36 @@ text_area = Clapton::TextArea.new(:ExampleState, :example_attribute, { id: "exam
 text_field = Clapton::TextField.new(:ExampleState, :example_attribute, { id: "example-text-field" })
 
 text = Clapton::Text.new("Hello")`
+```
+
+### Preset Component Methods
+
+```javascript
+c.bq(...props)
+c.box(...props)
+c.b(...props)
+c.button(...props)
+c.check(...props)
+c.code(...props)
+c.datetime(...props)
+c.el(...props)
+c.embed(...props)
+c.em(...props)
+c.form(...props)
+c.h(...props)
+c.img(...props)
+c.a(...props)
+c.li(...props)
+c.ul(...props)
+c.ol(...props)
+c.p(...props)
+c.q(...props)
+c.radio(...props)
+c.select(...props)
+c.span(...props)
+c.textarea(...props)
+c.input(...props)
+c.text(...props)
 ```
 
 ### Streaming

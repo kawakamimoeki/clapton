@@ -1,7 +1,7 @@
 class HomeController < ApplicationController
   def index
     @components = [
-      [:SampleComponent, {}]
+      [:SampleComponent, { message: "Hello World", boolean: true, datetime: Time.now }]
     ]
   end
 end
