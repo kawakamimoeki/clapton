@@ -14,7 +14,7 @@ export class List {
     return this;
   }
 
-  get render(): string {
-    return `<ul ${htmlAttributes(this.attributes)}>${this.children.map(child => child.render).join("")}</ul>`;
+  get renderWrapper(): string {
+    return `<ul ${htmlAttributes(this.attributes)}>${this.children.map(child => child.renderWrapper).join("")}</ul>`;
   }
 }

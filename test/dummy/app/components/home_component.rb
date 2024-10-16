@@ -1,6 +1,7 @@
 class HomeComponent < Clapton::Component
   def render
-    @root.add(Clapton::Text.new(@state.message))
-    @root.render
+    box = c.box
+    box.add(c.text(@state.message))
+    box
   end
 end

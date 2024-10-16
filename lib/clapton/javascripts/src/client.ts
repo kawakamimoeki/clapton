@@ -21,13 +21,20 @@ const initializeComponents = async () => {
 };
 
 const createAndAppendComponent = async (component: ComponentDefinition, element: HTMLElement) => {
+  if (!element) {
+    return;
+  }
   const componentDom = document.createElement('div');
   const module = await import(`${component.component}`);
   const instance = new (module[component.component] as any)(component.state);
-  componentDom.innerHTML = instance.render;
+  componentDom.innerHTML = instance.renderWrapper;
   const firstChild = componentDom.firstChild as HTMLElement;
   if (firstChild) {
-    element.appendChild(firstChild);
+    if (element.children.length > 0) {
+      element.appendChild(firstChild);
+    } else {
+      element.outerHTML = firstChild.outerHTML;
+    }
   }
 };
 

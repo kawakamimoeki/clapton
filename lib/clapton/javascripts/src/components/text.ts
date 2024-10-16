@@ -5,7 +5,7 @@ export class Text {
     this.value = value;
   }
 
-  get render(): string {
+  get renderWrapper(): string {
     return this.value;
   }
 }

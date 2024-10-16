@@ -14,8 +14,8 @@ export class Button {
     return this;
   }
 
-  get render(): string {
-    return `<button ${htmlAttributes(this.attributes)}>${this.children.map(child => child.render).join("")}</button>`;
+  get renderWrapper(): string {
+    return `<button ${htmlAttributes(this.attributes)}>${this.children.map(child => child.renderWrapper).join("")}</button>`;
   }
 
   add_action(event: string, klass: string, fn: string, options: Record<string, any> = {}): Button {

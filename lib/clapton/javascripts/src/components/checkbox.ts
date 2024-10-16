@@ -12,7 +12,7 @@ export class Checkbox {
     this.attributes["data-attribute"] = attribute;
   }
 
-  get render(): string {
+  get renderWrapper(): string {
     return `<input type='checkbox' ${htmlAttributes(this.attributes)} value='${this.state[this.attribute] || ""}'/>`;
   }
 

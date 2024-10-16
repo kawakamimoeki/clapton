@@ -34,14 +34,14 @@ To use a Clapton component in your view:
 # app/components/task_list_component.rb
 class TaskListComponent < Clapton::Component
   def render
+    box = c.box
     @state.tasks.each do |task|
-      @root.add(TaskItemComponent.new(id: task[:id], title: task[:title], due: task[:due], done: task[:done]))
+      box.add(TaskItemComponent.new(id: task[:id], title: task[:title], due: task[:due], done: task[:done]))
     end
     btn = c.button
     btn.add(c.text("Add Task"))
     btn.add_action(:click, :TaskListState, :add_task)
-    @root.add(btn)
-    @root.render
+    box.add(btn)
   end
 end
 
@@ -51,6 +51,7 @@ end
 # app/components/task_item_component.rb
 class TaskItemComponent < Clapton::Component
   def render
+    box = c.box
     btn = c.button
     btn.add(c.text(@state.done ? "✅" : "🟩"))
     btn.add_action(:click, :TaskListState, :toggle_done)
@@ -61,8 +62,7 @@ class TaskItemComponent < Clapton::Component
     dt = c.datetime(@state, :due)
     dt.add_action(:input, :TaskListState, :update_due)
 
-    @root.add(btn).add(tf).add(dt)
-    @root.render
+    box.add(btn).add(tf).add(dt)
   end
 end
 
@@ -171,8 +171,8 @@ The `render` event is a special event that is triggered when the component is re
 class TaskListComponent < Clapton::Component
   def render
     # ...
-    @root.add_action(:render, :TaskListState, :add_empty_task, debounce: 500)
-    @root.render
+    box = c.box
+    box.add_action(:render, :TaskListState, :add_empty_task, debounce: 500)
   end
 end
 ```

@@ -1,9 +1,9 @@
 class ChatComponent < Clapton::Component
   def render
+    box = c.box
     @state[:messages].each do |message|
-      @root.add(MessageComponent.new(role: message[:role], content: message[:content]))
+      box.add(MessageComponent.new(role: message[:role], content: message[:content]))
     end
-    @root.add(UserPromptComponent.new(role: "user", content: ""))
-    @root.render
+    box.add(UserPromptComponent.new(role: "user", content: ""))
   end
 end

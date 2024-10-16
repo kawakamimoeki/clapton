@@ -9,8 +9,8 @@ export class Span {
     this.attributes = attributes;
   }
 
-  get render(): string {
-    return `<span ${htmlAttributes(this.attributes)}>${this.children.map(child => child.render).join("")}</span>`;
+  get renderWrapper(): string {
+    return `<span ${htmlAttributes(this.attributes)}>${this.children.map(child => child.renderWrapper).join("")}</span>`;
   }
 
   add(child: any): Span {

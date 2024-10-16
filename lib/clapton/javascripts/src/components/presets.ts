@@ -50,7 +50,7 @@ export class Presets {
   }
 
   img(...props: any[]) {
-    return new Clapton.Image(props[0], props[1])
+    return new Clapton.Image(props[0], props[1], props[2])
   }
 
   a(...props: any[]) {

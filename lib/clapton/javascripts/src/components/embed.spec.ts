@@ -3,6 +3,6 @@ import { Embed } from "./embed"
 
 describe("Embed", () => {
   it("returns empty string if no params", () => {
-    expect(new Embed("<blockquote></blockquote>").render).toBe("<blockquote></blockquote>")
+    expect(new Embed("<blockquote></blockquote>").renderWrapper).toBe("<blockquote></blockquote>")
   })
 })

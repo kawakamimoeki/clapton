@@ -9,8 +9,8 @@ export class BlockQuote {
     this.attributes = attributes;
   }
 
-  get render(): string {
-    return `<blockquote ${htmlAttributes(this.attributes)}>${this.children.map(child => child.render).join("")}</blockquote>`;
+  get renderWrapper(): string {
+    return `<blockquote ${htmlAttributes(this.attributes)}>${this.children.map(child => child.renderWrapper).join("")}</blockquote>`;
   }
 
   add(child: any): BlockQuote {

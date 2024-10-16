@@ -1,6 +1,7 @@
 class MessageComponent < Clapton::Component
   def render
-    @root.add(Clapton::Text.new("#{@state[:role]}: #{@state[:content]}"))
-    @root.render
+    box = c.box
+    box.add(c.text("#{@state[:role]}: #{@state[:content]}"))
+    box
   end
 end

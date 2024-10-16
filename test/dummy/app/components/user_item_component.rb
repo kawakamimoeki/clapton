@@ -1,10 +1,10 @@
 class UserItemComponent < Clapton::Component
   def render
-    link = Clapton::Link.new({ href: "/users/#{state[:id]}" })
-    link.add(Clapton::Text.new(state[:name]))
+    box = c.box
+    link = c.link({ href: "/users/#{state[:id]}" })
+    link.add(c.text(state[:name]))
     form = UserFormComponent.new({ id: state[:id], name: state[:name], count: state[:count] })
-    text = Clapton::Text.new(state[:count].to_s)
-    @root.add(link).add(form).add(text)
-    @root.render
+    text = c.text(state[:count].to_s)
+    box.add(link).add(form).add(text)
   end
 end

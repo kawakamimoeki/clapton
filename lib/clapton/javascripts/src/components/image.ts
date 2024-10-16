@@ -13,7 +13,7 @@ export class Image {
     this.alt = alt;
   }
 
-  get render(): string {
+  get renderWrapper(): string {
     return `<img src='${this.src}' alt='${this.alt}' ${htmlAttributes(this.attributes)}/>`;
   }
 }

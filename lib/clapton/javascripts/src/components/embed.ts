@@ -5,7 +5,7 @@ export class Embed {
     this.html = html;
   }
 
-  get render(): string {
+  get renderWrapper(): string {
     return this.html;
   }
 }
