@@ -47,12 +47,12 @@ module Clapton
         js += "\n"
         js += "import { c } from 'c';"
         js += "\n"
-        code.scan(/(\w+)Component\.new/).each do |match|
-          js += "import { #{match[0]}Component } from '#{match[0]}Component';"
-          js += "\n"
+        Dir.glob(Rails.root.join("app", "components", "**", "*.rb")).each do |f|
+          if File.basename(file, ".rb") != File.basename(f, ".rb")
+            js += "import { #{File.basename(f, ".rb").camelize} } from '#{File.basename(f, ".rb").camelize}';"
+            js += "\n"
+          end
         end
-        code = code.gsub(/([^a-zA-Z0-9])c\.(\w+?)\(/, '\1@c.\2(')
-        code = code.gsub(/([^a-zA-Z0-9])c\.(\w+?)(\.|$)/, '\1@c.\2()\3')
         js += Ruby2JS.convert(code, preset: true)
         js += "\n"
         js += "export { #{File.basename(file, ".rb").camelize} };"
