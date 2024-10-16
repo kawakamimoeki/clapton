@@ -1,16 +1,17 @@
+# app/components/task_item_component.rb
 class TaskItemComponent < Clapton::Component
   def render
-    button = Clapton::Button.new({ "data-testid": "task-done-#{@state.id}" })
-    button.add(Clapton::Text.new(@state.done ? "✅" : "🟩"))
-    button.add_action(:click, :TaskListState, :toggle_done)
+    btn = c.button({ "data-testid": "task-done-#{@state.id}" })
+    btn.add(c.text(@state.done ? "✅" : "🟩"))
+    btn.add_action(:click, :TaskListState, :toggle_done)
 
-    text_field = Clapton::TextField.new(@state, :title, { "data-testid": "task-title-#{@state.id}" })
-    text_field.add_action(:input, :TaskListState, :update_title)
+    tf = c.input(@state, :title, { "data-testid": "task-title-#{@state.id}" })
+    tf.add_action(:input, :TaskListState, :update_title)
 
-    datetime_field = Clapton::DateTimeField.new(@state, :due, { "data-testid": "task-due-#{@state.id}" })
-    datetime_field.add_action(:input, :TaskListState, :update_due)
+    dt = c.datetime(@state, :due, { "data-testid": "task-due-#{@state.id}" })
+    dt.add_action(:input, :TaskListState, :update_due)
 
-    @root.add(button).add(text_field).add(datetime_field)
+    @root.add(btn).add(tf).add(dt)
     @root.render
   end
 end
