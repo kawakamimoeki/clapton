@@ -14,7 +14,7 @@ export class ListItem {
     return this;
   }
 
-  get render(): string {
-    return `<li ${htmlAttributes(this.attributes)}>${this.children.map(child => child.render).join("")}</li>`;
+  get renderWrapper(): string {
+    return `<li ${htmlAttributes(this.attributes)}>${this.children.map(child => child.renderWrapper).join("")}</li>`;
   }
 }

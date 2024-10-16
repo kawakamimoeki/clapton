@@ -1,7 +1,8 @@
 class SampleComponent < Clapton::Component
   def render
+    box = c.box({ class: "sample-component" })
     text = Clapton::Text.new(@state.message)
-    @root
+    box
       .add(Clapton::BlockQuote.new.add(text))
       .add(c.bq.add(text))
       .add(Clapton::Box.new.add(text))
@@ -60,6 +61,5 @@ class SampleComponent < Clapton::Component
       .add(c.input(@state, :message, {}))
       .add(Clapton::Text.new("Hello World"))
       .add(c.text("Hello World"))
-      .render
   end
 end

@@ -4,11 +4,11 @@ import { Bold } from "./bold"
 
 describe("Bold", () => {
   it("returns empty string if no params", () => {
-    expect(new Bold().render).toBe("<strong ></strong>")
+    expect(new Bold().renderWrapper).toBe("<strong ></strong>")
   })
 
   it("returns attributes and data attributes", () => {
-    expect(new Bold({ id: "1", "data-foo": "bar" }).render).toBe(`<strong id='1' data-foo='bar'></strong>`)
+    expect(new Bold({ id: "1", "data-foo": "bar" }).renderWrapper).toBe(`<strong id='1' data-foo='bar'></strong>`)
   })
 
 
@@ -16,6 +16,6 @@ describe("Bold", () => {
     const text = new Text("Hello")
     const bold = new Bold()
     bold.add(text)
-    expect(bold.render).toBe(`<strong >Hello</strong>`)
+    expect(bold.renderWrapper).toBe(`<strong >Hello</strong>`)
   })
 })

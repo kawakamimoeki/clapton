@@ -10,8 +10,8 @@ export class Heading {
     this.attributes = attributes;
   }
 
-  get render(): string {
-    return `<h${this.level} ${htmlAttributes(this.attributes)}>${this.children.map(child => child.render).join("")}</h${this.level}>`;
+  get renderWrapper(): string {
+    return `<h${this.level} ${htmlAttributes(this.attributes)}>${this.children.map(child => child.renderWrapper).join("")}</h${this.level}>`;
   }
 
   add(child: any): Heading {

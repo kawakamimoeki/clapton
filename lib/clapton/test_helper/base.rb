@@ -18,7 +18,7 @@ module Clapton
         Box, Text, TextField, Button, DateTimeField, BlockQuote, Checkbox, Code, Element, Emphasis, Form, Heading, Image, Link, List, ListItem, OrderedList, Paragraph, Quote, RadioButton, Select, Span, Embed, Bold, TextArea
     };")
         context = ExecJS.compile(js)
-        html = context.eval("new #{component.name.camelize}(#{params.to_json}).render")
+        html = context.eval("new #{component.name.camelize}(#{params.to_json}).renderWrapper")
         @page = Capybara.string(html)
       end
 

@@ -9,8 +9,8 @@ export class Form {
     this.attributes = attributes;
   }
 
-  get render(): string {
-    return `<form ${htmlAttributes(this.attributes)}>${this.children.map(child => child.render).join("")}</form>`;
+  get renderWrapper(): string {
+    return `<form ${htmlAttributes(this.attributes)}>${this.children.map(child => child.renderWrapper).join("")}</form>`;
   }
 
   add(child: any): Form {

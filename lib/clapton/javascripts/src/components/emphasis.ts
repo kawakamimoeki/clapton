@@ -9,8 +9,8 @@ export class Emphasis {
     this.attributes = attributes;
   }
 
-  get render(): string {
-    return `<em ${htmlAttributes(this.attributes)}>${this.children.map(child => child.render).join("")}</em>`;
+  get renderWrapper(): string {
+    return `<em ${htmlAttributes(this.attributes)}>${this.children.map(child => child.renderWrapper).join("")}</em>`;
   }
 
   add(child: any): Emphasis {

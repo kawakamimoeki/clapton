@@ -11,8 +11,8 @@ export class Element {
     this.attributes = attributes;
   }
 
-  get render(): string {
-    return `<${this.type} ${htmlAttributes(this.attributes)}>${this.children.map(child => child.render).join("")}</${this.type}>`;
+  get renderWrapper(): string {
+    return `<${this.type} ${htmlAttributes(this.attributes)}>${this.children.map(child => child.renderWrapper).join("")}</${this.type}>`;
   }
 
   add(child: any): Element {

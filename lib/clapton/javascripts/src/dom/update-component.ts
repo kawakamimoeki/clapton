@@ -6,5 +6,5 @@ export const updateComponent = async (component: HTMLElement, state: any, proper
   const module = await import(`${componentName}`);
   const ComponentClass = module[componentName] as any;
   const instance = new ComponentClass(state, component.dataset.id);
-  morphdom(component, instance.render);
+  morphdom(component, instance.renderWrapper);
 };

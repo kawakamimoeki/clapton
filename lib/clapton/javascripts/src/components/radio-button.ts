@@ -12,7 +12,7 @@ export class RadioButton {
     this.attributes["data-attribute"] = attribute;
   }
 
-  get render(): string {
+  get renderWrapper(): string {
     return `<input type='radio' ${htmlAttributes(this.attributes)} value='${this.state[this.attribute] || ""}'/>`;
   }
 

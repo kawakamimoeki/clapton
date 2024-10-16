@@ -9,8 +9,8 @@ export class Bold {
     this.attributes = attributes;
   }
 
-  get render(): string {
-    return `<strong ${htmlAttributes(this.attributes)}>${this.children.map(child => child.render).join("")}</strong>`;
+  get renderWrapper(): string {
+    return `<strong ${htmlAttributes(this.attributes)}>${this.children.map(child => child.renderWrapper).join("")}</strong>`;
   }
 
   add(child: any): Bold {

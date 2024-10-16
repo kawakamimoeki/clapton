@@ -12,7 +12,7 @@ export class TextField {
     this.attributes["data-attribute"] = attribute;
   }
 
-  get render(): string {
+  get renderWrapper(): string {
     return `<input type='text' ${htmlAttributes(this.attributes)} value='${this.state[this.attribute] || ""}'/>`;
   }
 

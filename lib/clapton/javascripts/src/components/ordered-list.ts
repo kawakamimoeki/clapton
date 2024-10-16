@@ -14,7 +14,7 @@ export class OrderedList {
     return this;
   }
 
-  get render(): string {
-    return `<ol ${htmlAttributes(this.attributes)}>${this.children.map(child => child.render).join("")}</ol>`;
+  get renderWrapper(): string {
+    return `<ol ${htmlAttributes(this.attributes)}>${this.children.map(child => child.renderWrapper).join("")}</ol>`;
   }
 }

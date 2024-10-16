@@ -9,8 +9,8 @@ export class Code {
     this.attributes = attributes;
   }
 
-  get render(): string {
-    return `<code ${htmlAttributes(this.attributes)}>${this.children.map(child => child.render).join("")}</code>`;
+  get renderWrapper(): string {
+    return `<code ${htmlAttributes(this.attributes)}>${this.children.map(child => child.renderWrapper).join("")}</code>`;
   }
 
   add(child: any): Code {

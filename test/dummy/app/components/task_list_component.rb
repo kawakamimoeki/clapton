@@ -1,13 +1,13 @@
 class TaskListComponent < Clapton::Component
   def render
+    box = c.box
     @state.tasks.each do |task|
-      @root.add(TaskItemComponent.new(id: task[:id], title: task[:title], due: task[:due], done: task[:done]))
+      box.add(TaskItemComponent.new(id: task[:id], title: task[:title], due: task[:due], done: task[:done]))
     end
     add_button = Clapton::Button.new
     add_button.add(Clapton::Text.new("Add Task"))
     add_button.add_action(:click, :TaskListState, :add_task)
-    @root.add(add_button)
-    @root.add_action(:render, :TaskListState, :add_empty_task, debounce: 600)
-    @root.render
+    box.add(add_button)
+    box.add_action(:render, :TaskListState, :add_empty_task, debounce: 600)
   end
 end

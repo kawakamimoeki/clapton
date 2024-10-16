@@ -7,6 +7,8 @@ module Rails
         create_file "app/components/#{file_name}_component.rb" do
           <<~RUBY
           class #{class_name}Component < Clapton::Component
+            def render
+            end
           end
           RUBY
         end

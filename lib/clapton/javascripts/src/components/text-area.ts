@@ -12,7 +12,7 @@ export class TextArea {
     this.attributes["data-attribute"] = attribute;
   }
 
-  get render(): string {
+  get renderWrapper(): string {
     return `<textarea ${htmlAttributes(this.attributes)}>${this.state[this.attribute] || ""}</textarea>`;
   }
 

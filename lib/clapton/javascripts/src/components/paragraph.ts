@@ -9,8 +9,8 @@ export class Paragraph {
     this.attributes = attributes;
   }
 
-  get render(): string {
-    return `<p ${htmlAttributes(this.attributes)}>${this.children.map(child => child.render).join("")}</p>`;
+  get renderWrapper(): string {
+    return `<p ${htmlAttributes(this.attributes)}>${this.children.map(child => child.renderWrapper).join("")}</p>`;
   }
 
   add(child: any): Paragraph {

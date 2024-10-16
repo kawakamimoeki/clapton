@@ -12,7 +12,7 @@ export class DateTimeField {
     this.attributes["data-attribute"] = attribute;
   }
 
-  get render(): string {
+  get renderWrapper(): string {
     const value = this.state[this.attribute] ? this.datetime_local_value(this.state[this.attribute]) : "";
     return `<input type='datetime-local' ${htmlAttributes(this.attributes)} value='${value}'/>`;
   }

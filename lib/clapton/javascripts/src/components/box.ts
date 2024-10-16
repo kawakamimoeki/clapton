@@ -14,8 +14,8 @@ export class Box {
     return this;
   }
 
-  get render(): string {
-    return `<div ${htmlAttributes(this.attributes)}>${this.children.map(child => child.render).join("")}</div>`;
+  get renderWrapper(): string {
+    return `<div ${htmlAttributes(this.attributes)}>${this.children.map(child => child.renderWrapper).join("")}</div>`;
   }
 
   add_action(eventType: string, stateName: string, fnName: string, options: Record<string, any> = {}): this {

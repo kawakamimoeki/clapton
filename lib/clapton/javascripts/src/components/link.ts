@@ -10,8 +10,8 @@ export class Link {
     this.href = href;
   }
 
-  get render(): string {
-    return `<a href='${this.href}' ${htmlAttributes(this.attributes)}>${this.children.map(child => child.render).join("")}</a>`;
+  get renderWrapper(): string {
+    return `<a href='${this.href}' ${htmlAttributes(this.attributes)}>${this.children.map(child => child.renderWrapper).join("")}</a>`;
   }
 
   add(child: any): Link {

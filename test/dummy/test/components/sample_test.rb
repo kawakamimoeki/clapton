@@ -6,6 +6,7 @@ class SampleComponentTest < ActiveSupport::TestCase
 
   test "renders" do
     render_component(:SampleComponent, { message: "Hello World", boolean: true, datetime: Time.current })
+    assert_selector "div.sample-component"
     assert_selector "blockquote"
     assert_selector "div"
     assert_selector "button"

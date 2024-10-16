@@ -9,8 +9,8 @@ export class Quote {
     this.attributes = attributes;
   }
 
-  get render(): string {
-    return `<q ${htmlAttributes(this.attributes)}>${this.children.map(child => child.render).join("")}</q>`;
+  get renderWrapper(): string {
+    return `<q ${htmlAttributes(this.attributes)}>${this.children.map(child => child.renderWrapper).join("")}</q>`;
   }
 
   add(child: any): Quote {
