@@ -1,4 +1,4 @@
-var Clapton = (function (exports) {
+var c = (function (exports) {
     'use strict';
 
     const htmlAttributes = (params) => {
@@ -75,20 +75,6 @@ var Clapton = (function (exports) {
         }
     }
 
-    class Bold {
-        constructor(attributes = {}) {
-            this.children = [];
-            this.attributes = attributes;
-        }
-        get renderWrapper() {
-            return `<strong ${htmlAttributes(this.attributes)}>${this.children.map(child => child.renderWrapper).join("")}</strong>`;
-        }
-        add(child) {
-            this.children.push(child);
-            return this;
-        }
-    }
-
     class Button {
         constructor(attributes = {}) {
             this.attributes = attributes;
@@ -103,6 +89,20 @@ var Clapton = (function (exports) {
         }
         add_action(event, klass, fn, options = {}) {
             this.attributes["data-action"] = `${this.attributes["data-action"] || ""} ${event}->${klass}#${fn}@${options.debounce || 0}`;
+            return this;
+        }
+    }
+
+    class Bold {
+        constructor(attributes = {}) {
+            this.children = [];
+            this.attributes = attributes;
+        }
+        get renderWrapper() {
+            return `<strong ${htmlAttributes(this.attributes)}>${this.children.map(child => child.renderWrapper).join("")}</strong>`;
+        }
+        add(child) {
+            this.children.push(child);
             return this;
         }
     }
@@ -448,32 +448,111 @@ var Clapton = (function (exports) {
         }
     }
 
-    exports.BlockQuote = BlockQuote;
-    exports.Bold = Bold;
-    exports.Box = Box;
-    exports.Button = Button;
-    exports.Checkbox = Checkbox;
-    exports.Code = Code;
-    exports.Component = Component;
-    exports.DateTimeField = DateTimeField;
-    exports.Element = Element;
-    exports.Embed = Embed;
-    exports.Emphasis = Emphasis;
-    exports.Form = Form;
-    exports.Heading = Heading;
-    exports.Image = Image;
-    exports.Link = Link;
-    exports.List = List;
-    exports.ListItem = ListItem;
-    exports.OrderedList = OrderedList;
-    exports.Paragraph = Paragraph;
-    exports.Quote = Quote;
-    exports.RadioButton = RadioButton;
-    exports.Select = Select;
-    exports.Span = Span;
-    exports.Text = Text;
-    exports.TextArea = TextArea;
-    exports.TextField = TextField;
+    const Clapton = {
+        Box, Component, Text, TextField, Button, DateTimeField, BlockQuote, Checkbox, Code, Element, Emphasis, Form, Heading, Image, Link, List, ListItem, OrderedList, Paragraph, Quote, RadioButton, Select, Span, Embed, Bold, TextArea
+    };
+
+    const bq = (...props) => {
+        return new Clapton.BlockQuote(...props);
+    };
+    const box = (...props) => {
+        return new Clapton.Box(...props);
+    };
+    const b = (...props) => {
+        return new Clapton.Bold(...props);
+    };
+    const button = (...props) => {
+        return new Clapton.Button(...props);
+    };
+    const check = (...props) => {
+        return new Clapton.Checkbox(props[0], props[1], props[2]);
+    };
+    const code = (...props) => {
+        return new Clapton.Code(...props);
+    };
+    const datetime = (...props) => {
+        return new Clapton.DateTimeField(props[0], props[1], props[2]);
+    };
+    const el = (...props) => {
+        return new Clapton.Element(props[0], props[1]);
+    };
+    const embed = (...props) => {
+        return new Clapton.Embed(props[0]);
+    };
+    const em = (...props) => {
+        return new Clapton.Emphasis(...props);
+    };
+    const form = (...props) => {
+        return new Clapton.Form(...props);
+    };
+    const h = (...props) => {
+        return new Clapton.Heading(props[0], props[1]);
+    };
+    const img = (...props) => {
+        return new Clapton.Image(props[0], props[1], props[2]);
+    };
+    const a = (...props) => {
+        return new Clapton.Link(props[0], props[1]);
+    };
+    const li = (...props) => {
+        return new Clapton.ListItem(...props);
+    };
+    const ul = (...props) => {
+        return new Clapton.List(...props);
+    };
+    const ol = (...props) => {
+        return new Clapton.OrderedList(...props);
+    };
+    const p = (...props) => {
+        return new Clapton.Paragraph(...props);
+    };
+    const q = (...props) => {
+        return new Clapton.Quote(...props);
+    };
+    const radio = (...props) => {
+        return new Clapton.RadioButton(props[0], props[1], props[2]);
+    };
+    const select = (...props) => {
+        return new Clapton.Select(props[0], props[1], props[2]);
+    };
+    const span = (...props) => {
+        return new Clapton.Span(...props);
+    };
+    const textarea = (...props) => {
+        return new Clapton.TextArea(props[0], props[1], props[2]);
+    };
+    const input = (...props) => {
+        return new Clapton.TextField(props[0], props[1], props[2]);
+    };
+    const text = (...props) => {
+        return new Clapton.Text(props[0]);
+    };
+
+    exports.a = a;
+    exports.b = b;
+    exports.box = box;
+    exports.bq = bq;
+    exports.button = button;
+    exports.check = check;
+    exports.code = code;
+    exports.datetime = datetime;
+    exports.el = el;
+    exports.em = em;
+    exports.embed = embed;
+    exports.form = form;
+    exports.h = h;
+    exports.img = img;
+    exports.input = input;
+    exports.li = li;
+    exports.ol = ol;
+    exports.p = p;
+    exports.q = q;
+    exports.radio = radio;
+    exports.select = select;
+    exports.span = span;
+    exports.text = text;
+    exports.textarea = textarea;
+    exports.ul = ul;
 
     return exports;
 

@@ -9,6 +9,7 @@ module Clapton
             "imports": {
               "client": "/clapton/client.js",
               "components": "/clapton/components.js",
+              "c": "/clapton/c.js",
               #{ all_components.map do
                |component| "\"#{File.basename(component, ".rb").camelize}\": \"/clapton/#{File.basename(component, ".rb").camelize}.js\""
               end.join(",\n") }
