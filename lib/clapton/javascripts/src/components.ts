@@ -1,6 +1,7 @@
 import { BlockQuote } from "./components/block-quote"
 import { Box } from "./components/box"
 import { Button } from "./components/button"
+import { Bold } from "./components/bold"
 import { Checkbox } from "./components/checkbox"
 import { Code } from "./components/code"
 import { DateTimeField } from "./components/datetime-field"
@@ -22,8 +23,8 @@ import { Span } from "./components/span"
 import { Component } from "./components/component"
 import { TextField } from "./components/text-field"
 import { Text } from "./components/text"
-
+import { TextArea } from "./components/text-area"
 
 export const Clapton = {
-  Box, Component, Text, TextField, Button, DateTimeField, BlockQuote, Checkbox, Code, Element, Emphasis, Form, Heading, Image, Link, List, ListItem, OrderedList, Paragraph, Quote, RadioButton, Select, Span, Embed
+  Box, Component, Text, TextField, Button, DateTimeField, BlockQuote, Checkbox, Code, Element, Emphasis, Form, Heading, Image, Link, List, ListItem, OrderedList, Paragraph, Quote, RadioButton, Select, Span, Embed, Bold, TextArea
 };
