@@ -349,6 +349,18 @@ module ApplicationCable
 end
 ```
 
+### Events
+
+#### clapton:render
+
+The `clapton:render` event is a custom event that is triggered when the component is rendered.
+
+```javascript
+document.addEventListener("clapton:render", () => {
+  console.log("clapton:render");
+});
+```
+
 ### Testing
 
 #### RSpec
