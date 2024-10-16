@@ -20,7 +20,11 @@ export class Component {
 
   get renderWrapper(): string {
     const root = this.render;
-    root.attributes = { ...root.attributes, data: { ...root.attributes.data, component: this.constructor.name, state: JSON.stringify(this._state), id: this.id, errors: this._errors } };
+    if (root.attributes) {
+      root.attributes = { ...root.attributes, data: { ...root.attributes.data, component: this.constructor.name, state: JSON.stringify(this._state), id: this.id, errors: this._errors } };
+    } else {
+      root.attributes = { data: { component: this.constructor.name, state: JSON.stringify(this._state), id: this.id, errors: this._errors } };
+    }
     return root.renderWrapper;
   }
 }

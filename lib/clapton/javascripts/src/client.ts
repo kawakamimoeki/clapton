@@ -42,4 +42,6 @@ document.addEventListener("DOMContentLoaded", async () => {
   await initializeComponents();
   initializeActions();
   initializeInputs();
+  const event = new Event('clapton:render');
+  document.dispatchEvent(event);
 });

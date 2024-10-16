@@ -8,6 +8,11 @@
 
     <%= stylesheet_link_tag 'application', media: 'all' %>
     <%= clapton_javascript_tag %>
+    <script>
+      document.addEventListener("clapton:render", () => {
+        console.log("clapton:render");
+      });
+    </script>
   </head>
 
   <body>
