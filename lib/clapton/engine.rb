@@ -49,7 +49,7 @@ module Clapton
           js += "\n"
         end
         code = code.gsub(/([^a-zA-Z0-9])c\.(\w+?)\(/, '\1@c.\2(')
-        code = code.gsub(/([^a-zA-Z0-9])c\.(\w+?)\./, '\1@c.\2().')
+        code = code.gsub(/([^a-zA-Z0-9])c\.(\w+?)(\.|$)/, '\1@c.\2()\3')
         js += Ruby2JS.convert(code, preset: true)
         js += "\n"
         js += "export { #{File.basename(file, ".rb").camelize} };"
