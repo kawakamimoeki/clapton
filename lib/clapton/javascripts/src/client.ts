@@ -45,3 +45,14 @@ document.addEventListener("DOMContentLoaded", async () => {
   const event = new Event('clapton:render');
   document.dispatchEvent(event);
 });
+
+window.addEventListener('beforeunload', () => {
+  sessionStorage.setItem('scrollPosition', window.scrollY.toString());
+});
+
+document.addEventListener("clapton:render", () => {
+  const scrollPosition = sessionStorage.getItem('scrollPosition');
+  if (scrollPosition) {
+    window.scrollTo(0, parseInt(scrollPosition));
+  }
+});
