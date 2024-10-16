@@ -24,6 +24,7 @@ module Clapton
         FileUtils.mkdir_p(Rails.root.join("public", "clapton")) unless Rails.root.join("public", "clapton").exist?
         File.write(Rails.root.join("public", "clapton", "components.js"), File.read(File.join(__dir__, "javascripts", "dist", "components.js")))
         File.write(Rails.root.join("public", "clapton", "client.js"), File.read(File.join(__dir__, "javascripts", "dist", "client.js")))
+        File.write(Rails.root.join("public", "clapton", "c.js"), File.read(File.join(__dir__, "javascripts", "dist", "c.js")))
 
         compile_components
 
@@ -43,6 +44,8 @@ module Clapton
         code = File.read(file)
         js = ""
         js += "import { Clapton } from 'components';"
+        js += "\n"
+        js += "import { c } from 'c';"
         js += "\n"
         code.scan(/(\w+)Component\.new/).each do |match|
           js += "import { #{match[0]}Component } from '#{match[0]}Component';"

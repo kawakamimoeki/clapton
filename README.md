@@ -34,12 +34,12 @@ To use a Clapton component in your view:
 # app/components/task_list_component.rb
 class TaskListComponent < Clapton::Component
   def render
-    box = c.box
+    box = c(:box)
     @state.tasks.each do |task|
       box.add(TaskItemComponent.new(id: task[:id], title: task[:title], due: task[:due], done: task[:done]))
     end
-    btn = c.button
-    btn.add(c.text("Add Task"))
+    btn = c(:button)
+    btn.add(c(:text, "Add Task"))
     btn.add_action(:click, :TaskListState, :add_task)
     box.add(btn)
   end
@@ -51,15 +51,15 @@ end
 # app/components/task_item_component.rb
 class TaskItemComponent < Clapton::Component
   def render
-    box = c.box
-    btn = c.button
-    btn.add(c.text(@state.done ? "✅" : "🟩"))
+    box = c(:box)
+    btn = c(:button)
+    btn.add(c(:text, @state.done ? "✅" : "🟩"))
     btn.add_action(:click, :TaskListState, :toggle_done)
 
-    tf = c.input(@state, :title)
+    tf = c(:input, @state, :title)
     tf.add_action(:input, :TaskListState, :update_title)
 
-    dt = c.datetime(@state, :due)
+    dt = c(:datetime, @state, :due)
     dt.add_action(:input, :TaskListState, :update_due)
 
     box.add(btn).add(tf).add(dt)
@@ -171,7 +171,7 @@ The `render` event is a special event that is triggered when the component is re
 class TaskListComponent < Clapton::Component
   def render
     # ...
-    box = c.box
+    box = c(:box)
     box.add_action(:render, :TaskListState, :add_empty_task, debounce: 500)
   end
 end
@@ -256,31 +256,31 @@ text = Clapton::Text.new("Hello")`
 ### Preset Component Methods
 
 ```javascript
-c.bq(...props)
-c.box(...props)
-c.b(...props)
-c.button(...props)
-c.check(...props)
-c.code(...props)
-c.datetime(...props)
-c.el(...props)
-c.embed(...props)
-c.em(...props)
-c.form(...props)
-c.h(...props)
-c.img(...props)
-c.a(...props)
-c.li(...props)
-c.ul(...props)
-c.ol(...props)
-c.p(...props)
-c.q(...props)
-c.radio(...props)
-c.select(...props)
-c.span(...props)
-c.textarea(...props)
-c.input(...props)
-c.text(...props)
+c(:bq, ...props)
+c(:box, ...props)
+c(:b, ...props)
+c(:button, ...props)
+c(:check, ...props)
+c(:code, ...props)
+c(:datetime, ...props)
+c(:el, ...props)
+c(:embed, ...props)
+c(:em, ...props)
+c(:form, ...props)
+c(:h, ...props)
+c(:img, ...props)
+c(:a, ...props)
+c(:li, ...props)
+c(:ul, ...props)
+c(:ol, ...props)
+c(:p, ...props)
+c(:q, ...props)
+c(:radio, ...props)
+c(:select, ...props)
+c(:span, ...props)
+c(:textarea, ...props)
+c(:input, ...props)
+c(:text, ...props)
 ```
 
 ### Streaming
