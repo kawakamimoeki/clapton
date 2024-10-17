@@ -36,6 +36,7 @@ const createAndAppendComponent = async (component: ComponentDefinition, element:
       element.outerHTML = firstChild.outerHTML;
     }
   }
+  instance.runEffects();
 };
 
 document.addEventListener("DOMContentLoaded", async () => {

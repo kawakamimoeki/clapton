@@ -5,4 +5,6 @@ Rails.application.routes.draw do
   get "/users", to: "users#index"
   get "/chat", to: "chat#index"
   get "/tasks", to: "tasks#index"
+  get "/shop", to: "shop#index"
+  get "/video", to: "video#index"
 end
