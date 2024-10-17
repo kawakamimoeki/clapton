@@ -46,6 +46,14 @@ document.addEventListener("DOMContentLoaded", async () => {
   document.dispatchEvent(event);
 });
 
+document.addEventListener("turbo:render", async () => {
+  await initializeComponents();
+  initializeActions();
+  initializeInputs();
+  const event = new Event('clapton:render');
+  document.dispatchEvent(event);
+});
+
 window.addEventListener('beforeunload', () => {
   sessionStorage.setItem('scrollPosition', window.scrollY.toString());
 });
