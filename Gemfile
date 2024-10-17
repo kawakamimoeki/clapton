@@ -13,6 +13,8 @@ group :development, :test do
   gem 'minitest'
   gem 'capybara'
   gem 'selenium-webdriver'
+  gem "importmap-rails"
+  gem "turbo-rails"
 end
 
 # To use a debugger

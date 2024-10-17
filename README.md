@@ -349,6 +349,15 @@ module ApplicationCable
 end
 ```
 
+### Using with importmap-rails
+
+Use `clapton_javascript_tag` instead of `javascript_importmap_tags`.
+
+```diff
+- <%= javascript_importmap_tags %>
++ <%= clapton_javascript_tag %>
+```
+
 ### Events
 
 #### clapton:render
