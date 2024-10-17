@@ -7,4 +7,5 @@ export const updateComponent = async (component: HTMLElement, state: any, proper
   const ComponentClass = module[componentName] as any;
   const instance = new ComponentClass(state, component.dataset.id);
   morphdom(component, instance.renderWrapper);
+  instance.runEffects();
 };

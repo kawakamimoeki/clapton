@@ -177,6 +177,30 @@ class TaskListComponent < Clapton::Component
 end
 ```
 
+### Effect
+
+The `effect` method is a method that is triggered when the state is changed.
+
+```ruby
+# app/components/task_list_component.rb
+class TaskListComponent < Clapton::Component
+  effect [:tasks] do |state|
+    puts state[:tasks]
+  end
+end
+```
+
+If dependencies are not specified, the effect will be triggered on the first render.
+
+```ruby
+# app/components/video_player_component.rb
+class VideoPlayerComponent < Clapton::Component
+  effect [] do
+    puts "First render"
+  end
+end
+```
+
 ### Preset Components Classes
 
 ```ruby
