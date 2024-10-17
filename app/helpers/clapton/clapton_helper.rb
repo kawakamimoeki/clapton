@@ -1,11 +1,10 @@
 module Clapton
   module ClaptonHelper
 
-    def clapton_javascript_tag
+    def clapton_javascript_tag(entry_point = "application", importmap: nil)
       all_components = Dir.glob(Rails.root.join("app", "components", "**", "*.rb"))
-      tags = <<~HTML
-        <script type="importmap">
-          {
+      clapton_json = JSON.parse <<~JSON
+      {
             "imports": {
               "client": "/clapton/client.js",
               "components": "/clapton/components.js",
@@ -15,10 +14,25 @@ module Clapton
               end.join(",\n") }
             }
           }
-        </script>
-        <script type="module" src="/clapton/client.js"></script>
-      HTML
-      tags.html_safe
+      JSON
+      if defined?(javascript_importmap_tags)
+        importmap ||= Rails.application.importmap
+        json = { imports: JSON.parse(importmap.to_json(resolver: self))["imports"].merge(clapton_json["imports"]) }
+        safe_join [
+          javascript_inline_importmap_tag(json.to_json),
+          javascript_importmap_module_preload_tags(importmap, entry_point:),
+          javascript_import_module_tag(entry_point),
+          tag.script(type: "module", src: "/clapton/client.js"),
+        ], "\n"
+      else
+        html = <<~HTML
+          <script type="importmap">
+            #{clapton_json.to_json}
+          </script>
+          <script type="module" src="/clapton/client.js"></script>
+        HTML
+        html.html_safe
+      end
     end
 
     def clapton_tag
