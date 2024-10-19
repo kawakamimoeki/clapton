@@ -14,6 +14,9 @@ export class Input extends Base {
 
   get renderWrapper(): string {
     let value = this.state[this.attribute]
+    if (!this.attributes.type) {
+      this.attributes.type = "text"
+    }
     if (this.attributes.type === "datetime-local" && value) {
       value = this.datetime_local_value(value)
     }
