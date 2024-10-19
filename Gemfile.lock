@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    clapton (0.0.25)
+    clapton (0.0.26)
       capybara (~> 3)
       execjs (~> 2)
       listen (~> 3)
