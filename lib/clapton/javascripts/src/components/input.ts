@@ -10,6 +10,7 @@ export class Input extends Base {
     this.attribute = attribute;
     this.state = state
     this.attributes["data-attribute"] = attribute;
+    this.attributes["data-id"] = Math.random().toString(36).substring(2, 10);
   }
 
   get renderWrapper(): string {

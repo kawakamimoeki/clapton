@@ -12,7 +12,7 @@ export const handleAction = async (target: HTMLElement, stateName: string, fn: s
   const attribute = target.dataset.attribute;
   if (attribute) {  
     const state = JSON.parse(component.dataset.state || "{}");
-    if (target.tagName === "INPUT") {
+    if (target.dataset.attribute) {
       state[attribute] = (target as HTMLInputElement).value;
       component.dataset.state = JSON.stringify(state);
     }
@@ -30,7 +30,8 @@ export const handleAction = async (target: HTMLElement, stateName: string, fn: s
           action: fn,
           attributes: JSON.parse(targetComponent.dataset.state || "{}"),
         },
-        params: JSON.parse(component.dataset.state || "{}")
+        params: JSON.parse(component.dataset.state || "{}"),
+        focus: target.dataset.id,
       }
     }
   );

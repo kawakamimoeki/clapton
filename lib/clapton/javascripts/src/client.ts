@@ -1,5 +1,4 @@
 import { initializeActions } from "actions/initialize-actions";
-import { initializeInputs } from "inputs/initialize-inputs";
 
 interface ComponentDefinition {
   component: string;
@@ -42,7 +41,6 @@ const createAndAppendComponent = async (component: ComponentDefinition, element:
 document.addEventListener("DOMContentLoaded", async () => {
   await initializeComponents();
   initializeActions();
-  initializeInputs();
   const event = new Event('clapton:render');
   document.dispatchEvent(event);
 });
@@ -50,7 +48,6 @@ document.addEventListener("DOMContentLoaded", async () => {
 document.addEventListener("turbo:render", async () => {
   await initializeComponents();
   initializeActions();
-  initializeInputs();
   const event = new Event('clapton:render');
   document.dispatchEvent(event);
 });

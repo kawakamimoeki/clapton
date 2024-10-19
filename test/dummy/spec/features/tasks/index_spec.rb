@@ -60,7 +60,7 @@ describe "Tasks", :js do
     sleep 0.2
     field.send_keys("2")
     sleep 0.2
-    expect(page).to have_selector("input[type='text'][value='Task 2']")
+    expect(field.value).to eq "Task 2"
   end
 
   it "updates a task due date" do
@@ -89,6 +89,6 @@ describe "Tasks", :js do
     sleep 0.2
     field.send_keys("2")
     sleep 0.2
-    expect(page).to have_selector("input[type='text'][value='Task 2']")
+    expect(field.value).to eq "Task 2"
   end
 end
