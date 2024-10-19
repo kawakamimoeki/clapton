@@ -110,6 +110,10 @@ const text = (...props: any[]) => {
 
 const c = (name: string, ...props: any[]) => {
   switch (name) {
+    case "bq":
+      return blockquote(...props)
+    case "box":
+      return div(...props)
     case "blockquote":
       return blockquote(...props)
     case "div":
@@ -128,6 +132,8 @@ const c = (name: string, ...props: any[]) => {
       return em(...props)
     case "form":
       return form(...props)
+    case "h":
+      return h1(...props)
     case "h1":
       return h1(...props)
     case "h2":
@@ -164,6 +170,15 @@ const c = (name: string, ...props: any[]) => {
       return input(...props)
     case "text":
       return text(...props)
+    case "radio":
+      props[3].type = "radio"
+      return input(...props)
+    case "datetime":
+      props[3].type = "datetime-local"
+      return input(...props)
+    case "check":
+      props[3].type = "checkbox"
+      return input(...props)
     default:
       return new Clapton.Element(name, ...props)
   }
