@@ -1,21 +1,15 @@
 import { htmlAttributes } from "../html/html-attributes";
+import { Base } from "./base";
 
-export class Heading {
-  attributes: Record<string, any>;
-  children: any[];
+export class Heading extends Base {
   level: number;
+
   constructor(level: number, attributes: Record<string, any> = {}) {
-    this.children = [];
+    super(attributes)
     this.level = level;
-    this.attributes = attributes;
   }
 
   get renderWrapper(): string {
     return `<h${this.level} ${htmlAttributes(this.attributes)}>${this.children.map(child => child.renderWrapper).join("")}</h${this.level}>`;
-  }
-
-  add(child: any): Heading {
-    this.children.push(child);
-    return this;
   }
 }

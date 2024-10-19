@@ -1,5 +1,5 @@
 import { describe, it, expect } from "vitest"
-import { BlockQuote } from "./block-quote"
+import { BlockQuote} from "./block-quote"
 import { Text } from "./text"
 
 describe("BlockQuote", () => {

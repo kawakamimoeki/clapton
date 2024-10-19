@@ -1,23 +1,18 @@
 import { htmlAttributes } from "../html/html-attributes";
+import { Base } from "./base";
 
-export class TextArea {
+export class TextArea extends Base {
   state: any;
   attribute: string;
-  attributes: Record<string, any>;
 
   constructor(state: any, attribute: string, attributes: Record<string, any> = {}) {
-    this.state = state;
-    this.attributes = attributes;
+    super(attributes)
     this.attribute = attribute;
+    this.state = state
     this.attributes["data-attribute"] = attribute;
   }
 
   get renderWrapper(): string {
     return `<textarea ${htmlAttributes(this.attributes)}>${this.state[this.attribute] || ""}</textarea>`;
-  }
-
-  add_action(event: string, klass: string, fn: string, options: { debounce?: number } = {}): TextArea {
-    this.attributes["data-action"] = `${this.attributes["data-action"] || ""} ${event}->${klass}#${fn}@${options.debounce || 0}`;
-    return this;
   }
 }

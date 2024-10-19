@@ -1,10 +1,8 @@
 class VideoPlayerComponent < Clapton::Component
   def render
-    c(:embed, <<~HTML
-      <video id="video" src="#{@state.url}" loop playsInline></video>
-      <div id="video-debug"></div>
-    HTML
-    )
+    box = c(:div)
+    box.add(c(:video, { id: "video", src: @state.url, loop: "loop", playsInline: "playsInline" }))
+    box.add(c(:div, { id: "video-debug" }))
   end
 
   effect [:is_playing] do |state|

@@ -1,10 +1,8 @@
 import { BlockQuote } from "./components/block-quote"
-import { Box } from "./components/box"
+import { Div } from "./components/div"
 import { Button } from "./components/button"
 import { Bold } from "./components/bold"
-import { Checkbox } from "./components/checkbox"
 import { Code } from "./components/code"
-import { DateTimeField } from "./components/datetime-field"
 import { Element } from "./components/element"
 import { Embed } from "./components/embed"
 import { Emphasis } from "./components/emphasis"
@@ -17,14 +15,13 @@ import { List } from "./components/list"
 import { OrderedList } from "./components/ordered-list"
 import { Paragraph } from "./components/paragraph"
 import { Quote } from "./components/quote"
-import { RadioButton } from "./components/radio-button"
 import { Select } from "./components/select"
 import { Span } from "./components/span"
 import { Component } from "./components/component"
-import { TextField } from "./components/text-field"
+import { Input } from "./components/input"
 import { Text } from "./components/text"
 import { TextArea } from "./components/text-area"
 
 export const Clapton = {
-  Box, Component, Text, TextField, Button, DateTimeField, BlockQuote, Checkbox, Code, Element, Emphasis, Form, Heading, Image, Link, List, ListItem, OrderedList, Paragraph, Quote, RadioButton, Select, Span, Embed, Bold, TextArea
+  Div, Component, Text, Input, Button, BlockQuote, Code, Element, Emphasis, Form, Heading, Image, Link, List, ListItem, OrderedList, Paragraph, Quote, Select, Span, Embed, Bold, TextArea
 };

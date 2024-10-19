@@ -1,6 +1,6 @@
 class UserPromptComponent < Clapton::Component
   def render
-    box = c(:box)
+    box = c(:div)
     text_field = c(:input, @state, :content)
     button = c(:button, { disabled: @state.content.empty? })
     button.add(c(:text, "Send"))

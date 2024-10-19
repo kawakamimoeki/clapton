@@ -1,19 +1,7 @@
 import { htmlAttributes } from "../html/html-attributes";
+import { Base } from "./base";
 
-export class ListItem {
-  attributes: Record<string, any>;
-  children: any[];
-
-  constructor(attributes: Record<string, any> = {}) {
-    this.children = [];
-    this.attributes = attributes;
-  }
-
-  add(child: any): this {
-    this.children.push(child);
-    return this;
-  }
-
+export class ListItem extends Base {
   get renderWrapper(): string {
     return `<li ${htmlAttributes(this.attributes)}>${this.children.map(child => child.renderWrapper).join("")}</li>`;
   }

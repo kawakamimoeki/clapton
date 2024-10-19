@@ -1,11 +1,11 @@
 import { Clapton } from "components"
 
-const bq = (...props: any[]) => {
+const blockquote = (...props: any[]) => {
   return new Clapton.BlockQuote(...props)
 }
 
-const box = (...props: any[]) => {
-  return new Clapton.Box(...props)
+const div = (...props: any[]) => {
+  return new Clapton.Div(...props)
 }
 
 const b = (...props: any[]) => {
@@ -16,16 +16,8 @@ const button = (...props: any[]) => {
   return new Clapton.Button(...props)
 }
 
-const check = (...props: any[]) => {
-  return new Clapton.Checkbox(props[0], props[1], props[2])
-}
-
 const code = (...props: any[]) => {
   return new Clapton.Code(...props)
-}
-
-const datetime = (...props: any[]) => {
-  return new Clapton.DateTimeField(props[0], props[1], props[2])
 }
 
 const el = (...props: any[]) => {
@@ -44,16 +36,36 @@ const form = (...props: any[]) => {
   return new Clapton.Form(...props)
 }
 
-const h = (...props: any[]) => {
-  return new Clapton.Heading(props[0], props[1])
+const h1 = (...props: any[]) => {
+  return new Clapton.Heading(1, props[1])
+}
+
+const h2 = (...props: any[]) => {
+  return new Clapton.Heading(2, props[1])
+}
+
+const h3 = (...props: any[]) => {
+  return new Clapton.Heading(3, props[1])
+}
+
+const h4 = (...props: any[]) => {
+  return new Clapton.Heading(4, props[1])
+}
+
+const h5 = (...props: any[]) => {
+  return new Clapton.Heading(5, props[1])
+}
+
+const h6 = (...props: any[]) => {
+  return new Clapton.Heading(6, props[1])
 }
 
 const img = (...props: any[]) => {
-  return new Clapton.Image(props[0], props[1], props[2])
+  return new Clapton.Image(props[0])
 }
 
 const a = (...props: any[]) => {
-  return new Clapton.Link(props[0], props[1])
+  return new Clapton.Link(props[0])
 }
 
 const li = (...props: any[]) => {
@@ -76,10 +88,6 @@ const q = (...props: any[]) => {
   return new Clapton.Quote(...props)
 }
 
-const radio = (...props: any[]) => {
-  return new Clapton.RadioButton(props[0], props[1], props[2])
-}
-
 const select = (...props: any[]) => {
   return new Clapton.Select(props[0], props[1], props[2])
 }
@@ -93,7 +101,7 @@ const textarea = (...props: any[]) => {
 }
 
 const input = (...props: any[]) => {
-  return new Clapton.TextField(props[0], props[1], props[2])
+  return new Clapton.Input(props[0], props[1], props[2])
 }
 
 const text = (...props: any[]) => {
@@ -102,20 +110,16 @@ const text = (...props: any[]) => {
 
 const c = (name: string, ...props: any[]) => {
   switch (name) {
-    case "bq":
-      return bq(...props)
-    case "box":
-      return box(...props)
+    case "blockquote":
+      return blockquote(...props)
+    case "div":
+      return div(...props)
     case "b":
       return b(...props)
     case "button":
       return button(...props)
-    case "check":
-      return check(...props)
     case "code":
       return code(...props)
-    case "datetime":
-      return datetime(...props)
     case "el":
       return el(...props)
     case "embed":
@@ -124,8 +128,18 @@ const c = (name: string, ...props: any[]) => {
       return em(...props)
     case "form":
       return form(...props)
-    case "h":
-      return h(...props)
+    case "h1":
+      return h1(...props)
+    case "h2":
+      return h2(...props)
+    case "h3":
+      return h3(...props)
+    case "h4":
+      return h4(...props)
+    case "h5":
+      return h5(...props)
+    case "h6":
+      return h6(...props)
     case "img":
       return img(...props)
     case "a":
@@ -140,8 +154,6 @@ const c = (name: string, ...props: any[]) => {
       return p(...props)
     case "q":
       return q(...props)
-    case "radio":
-      return radio(...props)
     case "select":
       return select(...props)
     case "span":
@@ -153,7 +165,7 @@ const c = (name: string, ...props: any[]) => {
     case "text":
       return text(...props)
     default:
-      return new Clapton.Component(...props)
+      return new Clapton.Element(name, ...props)
   }
 }
 

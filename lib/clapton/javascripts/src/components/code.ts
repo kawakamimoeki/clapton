@@ -1,20 +1,8 @@
 import { htmlAttributes } from "../html/html-attributes";
+import { Base } from "./base";
 
-export class Code {
-  attributes: Record<string, any>;
-  children: any[];
-
-  constructor(attributes: Record<string, any> = {}) {
-    this.children = [];
-    this.attributes = attributes;
-  }
-
+export class Code extends Base {
   get renderWrapper(): string {
     return `<code ${htmlAttributes(this.attributes)}>${this.children.map(child => child.renderWrapper).join("")}</code>`;
-  }
-
-  add(child: any): Code {
-    this.children.push(child);
-    return this;
   }
 }
