@@ -19,6 +19,7 @@ module Clapton
                 id: data["data"]["component"]["id"],
               },
               state: state.to_h,
+              focus: data["data"]["focus"] 
             }
           })
         end
@@ -32,6 +33,7 @@ module Clapton
                 id: data["data"]["component"]["id"],
               },
               state: state.to_h,
+              focus: data["data"]["focus"]
             }
           })
           return
@@ -47,6 +49,7 @@ module Clapton
               id: data["data"]["component"]["id"],
             },
             state: state.to_h,
+            focus: data["data"]["focus"]
           }
         })
       else
@@ -59,6 +62,7 @@ module Clapton
               id: data["data"]["component"]["id"],
             },
             state: state.to_h,
+            focus: data["data"]["focus"]
           }
         })
       end
