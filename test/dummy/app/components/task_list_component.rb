@@ -1,6 +1,6 @@
 class TaskListComponent < Clapton::Component
   def render
-    box = c(:box)
+    box = c(:div)
     @state.tasks.each do |task|
       box.add(TaskItemComponent.new(id: task[:id], title: task[:title], due: task[:due], done: task[:done]))
     end

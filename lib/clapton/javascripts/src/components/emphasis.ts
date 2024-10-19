@@ -1,20 +1,8 @@
 import { htmlAttributes } from "../html/html-attributes";
+import { Base } from "./base";
 
-export class Emphasis {
-  attributes: Record<string, any>;
-  children: any[];
-
-  constructor(attributes: Record<string, any> = {}) {
-    this.children = [];
-    this.attributes = attributes;
-  }
-
+export class Emphasis extends Base {
   get renderWrapper(): string {
     return `<em ${htmlAttributes(this.attributes)}>${this.children.map(child => child.renderWrapper).join("")}</em>`;
-  }
-
-  add(child: any): Emphasis {
-    this.children.push(child);
-    return this;
   }
 }

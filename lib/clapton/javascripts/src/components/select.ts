@@ -1,23 +1,21 @@
 import { htmlAttributes } from "../html/html-attributes";
+import { Base } from "./base";
 
 type SelectOption = {
   value: string;
   text: string;
 };
 
-export class Select {
-  attributes: Record<string, any>;
-  children: any[];
+export class Select extends Base {
   options: SelectOption[];
   state: any;
   attribute: string;
 
   constructor(options: SelectOption[] = [], state: any, attribute: string, attributes: Record<string, any> = {}) {
-    this.children = [];
+    super(attributes)
     this.options = options;
     this.state = state;
     this.attribute = attribute;
-    this.attributes = attributes;
   }
 
   get renderWrapper(): string {

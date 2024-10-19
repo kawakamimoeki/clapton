@@ -12,10 +12,10 @@ module Clapton
           js += "\n"
         end
         js = js.sub("const Clapton = {
-        Box, Component, Text, TextField, Button, DateTimeField, BlockQuote, Checkbox, Code, Element, Emphasis, Form, Heading, Image, Link, List, ListItem, OrderedList, Paragraph, Quote, RadioButton, Select, Span, Embed, Bold, TextArea
-    };", "const Clapton = {
-        Box, Text, TextField, Button, DateTimeField, BlockQuote, Checkbox, Code, Element, Emphasis, Form, Heading, Image, Link, List, ListItem, OrderedList, Paragraph, Quote, RadioButton, Select, Span, Embed, Bold, TextArea
-    };")
+    Div, Component, Text, Input, Button, BlockQuote, Code, Element, Emphasis, Form, Heading, Image, Link, List, ListItem, OrderedList, Paragraph, Quote, Select, Span, Embed, Bold, TextArea
+};", "const Clapton = {
+    Div, Text, Input, Button, BlockQuote, Code, Element, Emphasis, Form, Heading, Image, Link, List, ListItem, OrderedList, Paragraph, Quote, Select, Span, Embed, Bold, TextArea
+};")
         context = ExecJS.compile(js)
         html = context.eval("new #{component.name.camelize}(#{params.to_json}).renderWrapper")
         @page = Capybara.string(html)

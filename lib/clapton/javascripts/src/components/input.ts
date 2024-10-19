@@ -1,25 +1,23 @@
 import { htmlAttributes } from "../html/html-attributes";
+import { Base } from "./base";
 
-export class DateTimeField {
+export class Input extends Base {
   state: any;
   attribute: string;
-  attributes: Record<string, any> = {};
 
   constructor(state: any, attribute: string, attributes: Record<string, any> = {}) {
-    this.state = state;
+    super(attributes)
     this.attribute = attribute;
-    this.attributes = attributes;
+    this.state = state
     this.attributes["data-attribute"] = attribute;
   }
 
   get renderWrapper(): string {
-    const value = this.state[this.attribute] ? this.datetime_local_value(this.state[this.attribute]) : "";
-    return `<input type='datetime-local' ${htmlAttributes(this.attributes)} value='${value}'/>`;
-  }
-
-  add_action(event: string, klass: string, fn: string, options: { debounce?: number } = {}): DateTimeField {
-    this.attributes["data-action"] = `${this.attributes["data-action"] || ""} ${event}->${klass}#${fn}@${options.debounce || 0}`;
-    return this;
+    let value = this.state[this.attribute]
+    if (this.attributes.type === "datetime-local" && value) {
+      value = this.datetime_local_value(value)
+    }
+    return `<input ${htmlAttributes(this.attributes)} value='${value || ""}'/>`;
   }
 
   datetime_local_value(value: string): string {

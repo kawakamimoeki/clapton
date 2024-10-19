@@ -1,4 +1,4 @@
-import { Box } from "./box";
+import { Div } from "./div";
 
 export class Component {
   id: string;
@@ -14,7 +14,7 @@ export class Component {
   }
 
   get render(): any {
-    return new Box({});
+    return new Div({});
   }
 
   get renderWrapper(): string {

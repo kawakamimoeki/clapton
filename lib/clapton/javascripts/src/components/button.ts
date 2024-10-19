@@ -1,25 +1,8 @@
 import { htmlAttributes } from "../html/html-attributes";
+import { Base } from "./base";
 
-export class Button {
-  attributes: Record<string, any>;
-  children: any[];
-
-  constructor(attributes: Record<string, any> = {}) {
-    this.attributes = attributes;
-    this.children = [];
-  }
-
-  add(child: any): Button {
-    this.children.push(child);
-    return this;
-  }
-
+export class Button extends Base {
   get renderWrapper(): string {
     return `<button ${htmlAttributes(this.attributes)}>${this.children.map(child => child.renderWrapper).join("")}</button>`;
-  }
-
-  add_action(event: string, klass: string, fn: string, options: Record<string, any> = {}): Button {
-    this.attributes["data-action"] = `${this.attributes["data-action"] || ""} ${event}->${klass}#${fn}@${options.debounce || 0}`;
-    return this;
   }
 }

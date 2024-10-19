@@ -1,6 +1,4 @@
-import { htmlAttributes } from "../html/html-attributes";
-
-export class Box {
+export class Base {
   attributes: Record<string, any>;
   children: any[];
 
@@ -9,17 +7,17 @@ export class Box {
     this.attributes = attributes;
   }
 
-  add(child: any): this {
+  add(child: any): Base {
     this.children.push(child);
     return this;
-  }
-
-  get renderWrapper(): string {
-    return `<div ${htmlAttributes(this.attributes)}>${this.children.map(child => child.renderWrapper).join("")}</div>`;
   }
 
   add_action(eventType: string, stateName: string, fnName: string, options: Record<string, any> = {}): this {
     this.attributes["data-action"] = `${this.attributes["data-action"] || ""} ${eventType}->${stateName}#${fnName}@${options.debounce || 0}`;
     return this;
+  }
+  
+  get renderWrapper() {
+    return "";
   }
 }

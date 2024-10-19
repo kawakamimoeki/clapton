@@ -34,14 +34,14 @@ To use a Clapton component in your view:
 # app/components/task_list_component.rb
 class TaskListComponent < Clapton::Component
   def render
-    box = c(:box)
+    div = c(:div)
     @state.tasks.each do |task|
-      box.add(TaskItemComponent.new(id: task[:id], title: task[:title], due: task[:due], done: task[:done]))
+      div.add(TaskItemComponent.new(id: task[:id], title: task[:title], due: task[:due], done: task[:done]))
     end
     btn = c(:button)
     btn.add(c(:text, "Add Task"))
     btn.add_action(:click, :TaskListState, :add_task)
-    box.add(btn)
+    div.add(btn)
   end
 end
 
@@ -51,7 +51,7 @@ end
 # app/components/task_item_component.rb
 class TaskItemComponent < Clapton::Component
   def render
-    box = c(:box)
+    div = c(:div)
     btn = c(:button)
     btn.add(c(:text, @state.done ? "✅" : "🟩"))
     btn.add_action(:click, :TaskListState, :toggle_done)
@@ -62,7 +62,7 @@ class TaskItemComponent < Clapton::Component
     dt = c(:datetime, @state, :due)
     dt.add_action(:input, :TaskListState, :update_due)
 
-    box.add(btn).add(tf).add(dt)
+    div.add(btn).add(tf).add(dt)
   end
 end
 
@@ -171,8 +171,8 @@ The `render` event is a special event that is triggered when the component is re
 class TaskListComponent < Clapton::Component
   def render
     # ...
-    box = c(:box)
-    box.add_action(:render, :TaskListState, :add_empty_task, debounce: 500)
+    div = c(:div)
+    div.add_action(:render, :TaskListState, :add_empty_task, debounce: 500)
   end
 end
 ```
@@ -199,112 +199,6 @@ class VideoPlayerComponent < Clapton::Component
     puts "First render"
   end
 end
-```
-
-### Preset Components Classes
-
-```ruby
-block_quote = Clapton::BlockQuote.new
-block_quote.add(Clapton::Text.new("Hello"))
-
-box = Clapton::Box.new
-box.add(Clapton::Text.new("Hello"))
-
-button = Clapton::Button.new
-button.add(Clapton::Text.new("Click me"))
-button.add_action(:click, :TaskListState, :add_task)
-
-checkbox = Clapton::Checkbox.new(:ExampleState, :example_attribute, { id: "example-checkbox" })
-checkbox.add_action(:change, :ExampleState, :update_example_attribute)
-
-code = Clapton::Code.new
-code.add(Clapton::Text.new("Hello"))
-
-datetime_field = Clapton::DateTimeField.new(:ExampleState, :example_attribute, { id: "example-datetime-field" })
-
-element = Clapton::Element.new("div", { id: "example-element" })
-element.add(Clapton::Text.new("Hello"))
-
-embed = Clapton::Embed.new("<blockquote>This is a test</blockquote>")
-
-emphasis = Clapton::Emphasis.new
-emphasis.add(Clapton::Text.new("Hello"))
-
-form = Clapton::Form.new
-form.add(Clapton::Text.new("Hello"))
-
-heading = Clapton::Heading.new(1)
-heading.add(Clapton::Text.new("Hello"))
-
-image = Clapton::Image.new("https://example.com/image.png", "Example Image")
-
-link = Clapton::Link.new("https://example.com")
-link.add(Clapton::Text.new("Example Link"))
-
-list = Clapton::List.new
-(1..3).each do
-  item = Clapton::ListItem.new
-  item.add(Clapton::Text.new("Item #{i}"))
-  list.add(item)
-end
-
-ordered_list = Clapton::OrderedList.new
-(1..3).each do
-  item = Clapton::ListItem.new
-  item.add(Clapton::Text.new("Item #{i}"))
-  ordered_list.add(item)
-end
-
-paragraph = Clapton::Paragraph.new
-paragraph.add(Clapton::Text.new("Hello"))
-
-quote = Clapton::Quote.new
-quote.add(Clapton::Text.new("Hello"))
-
-radio_button = Clapton::RadioButton.new(:ExampleState, :example_attribute, { id: "example-radio-button" })
-radio_button.add_action(:change, :ExampleState, :update_example_attribute)
-
-select = Clapton::Select.new([{ value: "1", text: "One" }, { value: "2", text: "Two" }], :ExampleState, :example_attribute, { id: "example-select" })
-select.add_action(:change, :ExampleState, :update_example_attribute)
-
-span = Clapton::Span.new
-span.add(Clapton::Text.new("Hello"))
-
-text_area = Clapton::TextArea.new(:ExampleState, :example_attribute, { id: "example-text-area" })
-
-text_field = Clapton::TextField.new(:ExampleState, :example_attribute, { id: "example-text-field" })
-
-text = Clapton::Text.new("Hello")`
-```
-
-### Preset Component Methods
-
-```javascript
-c(:bq, ...props)
-c(:box, ...props)
-c(:b, ...props)
-c(:button, ...props)
-c(:check, ...props)
-c(:code, ...props)
-c(:datetime, ...props)
-c(:el, ...props)
-c(:embed, ...props)
-c(:em, ...props)
-c(:form, ...props)
-c(:h, ...props)
-c(:img, ...props)
-c(:a, ...props)
-c(:li, ...props)
-c(:ul, ...props)
-c(:ol, ...props)
-c(:p, ...props)
-c(:q, ...props)
-c(:radio, ...props)
-c(:select, ...props)
-c(:span, ...props)
-c(:textarea, ...props)
-c(:input, ...props)
-c(:text, ...props)
 ```
 
 ### Streaming
